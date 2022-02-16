@@ -1,20 +1,45 @@
-﻿using FarmSystem.Test2;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace FarmSystem.Test1
 {
     public abstract class Animal
     {
-        public virtual string Name { get; }
-        public virtual string Noise { get; }
+        public abstract string Name { get; }
+        public abstract string Noise { get; }
 
-        public string MakeNoise()
+        protected Guid _id = Guid.NewGuid();
+        public string Id { get { return this._id.ToString(); } }
+
+        public int NoOfLegs { get; set; }
+
+        public string TalkLine()
         {
             return $"{this.Name} says {this.Noise}";
+        }
+
+        public void Talk()
+        {
+            Console.WriteLine(this.TalkLine());
+        }
+
+        public string WalkLine()
+        {
+            return $"{this.Name} is walking";
+        }
+
+        public void Walk()
+        {
+            Console.WriteLine(this.WalkLine());
+        }
+
+        public string RunLine()
+        {
+            return $"{this.Name} is running";
+        }
+
+        public void Run()
+        {
+            Console.WriteLine(this.RunLine());
         }
     }
 }

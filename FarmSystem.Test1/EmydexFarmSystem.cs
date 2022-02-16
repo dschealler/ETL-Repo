@@ -6,7 +6,7 @@ namespace FarmSystem.Test1
 {
     public class EmydexFarmSystem
     {
-        private List<Animal> _animals = new List<Animal>();
+        private readonly List<Animal> _animals = new List<Animal>();
 
         //TEST 1
         public void Enter(Animal animal)
@@ -34,7 +34,7 @@ namespace FarmSystem.Test1
             {
                 foreach(var animal in this._animals)
                 {
-                    Console.WriteLine(animal.MakeNoise());
+                    animal.Talk();
                 }
             }
         }
@@ -50,11 +50,10 @@ namespace FarmSystem.Test1
             {
                 foreach (var animal in this._animals)
                 {
-                    var milkableAnimal = animal as IMilkableAnimal;
-                    if (milkableAnimal == null)
-                        continue;
-
-                    milkableAnimal.ProduceMilk();
+                    if (animal is IMilkableAnimal milkableAnimal)
+                    {
+                        milkableAnimal.ProduceMilk();
+                    }
                 }
             }
         }
