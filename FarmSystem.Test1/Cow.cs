@@ -5,11 +5,13 @@ namespace FarmSystem.Test1
     public class Cow : Animal
     {
         private const string NAME = "Cow";
+        private const string NOISE = "Moo!";
 
         private string _id;
         private int _noOfLegs = 4;
 
         public override string Name => NAME;
+        public override string Noise => NOISE;
 
         public string Id
         {
