@@ -6,14 +6,19 @@ namespace FarmSystem.Test1
 {
     public class EmydexFarmSystem
     {
-        private readonly List<Animal> _animals = new List<Animal>();
+        private readonly Queue<Animal> _animals;
+
+        public EmydexFarmSystem()
+        {
+            this._animals = new Queue<Animal>();
+        }
 
         //TEST 1
         public void Enter(Animal animal)
         {
             //TODO Modify the code so that we can display the type of animal (cow, sheep etc) 
             //Hold all the animals so it is available for future activities
-            this._animals.Add(animal);
+            this._animals.Enqueue(animal);
             Console.WriteLine(this.EnterLine(animal));
         }
 
@@ -21,7 +26,12 @@ namespace FarmSystem.Test1
         {
             return $"{animal.Name} has entered the farm";
         }
-     
+
+        public string LeaveLine(Animal animal)
+        {
+            return $"{animal.Name} has left the farm";
+        }
+
         //TEST 2
         public void MakeNoise()
         {
@@ -61,7 +71,28 @@ namespace FarmSystem.Test1
         //TEST 4
         public void ReleaseAllAnimals()
         {
-           Console.WriteLine("There are still animals in the farm, farm is not free");
+            if (this._animals.Count == 0)
+            {
+                Console.WriteLine("There are no animals in the farm");
+            }
+            else
+            {
+                while (this._animals.Count >= 1)
+                {
+                    var animal = this._animals.Dequeue();
+                    Console.WriteLine(this.LeaveLine(animal));
+                }
+
+                EventArgs e = new EventArgs();
+                this.OnFarmEmpty(e);
+            }
+        }
+
+        public event EventHandler FarmEmpty;
+        protected virtual void OnFarmEmpty(EventArgs e)
+        {
+            var handler = this.FarmEmpty;
+            handler?.Invoke(this, e);
         }
     }
 }

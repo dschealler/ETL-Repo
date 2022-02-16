@@ -146,6 +146,8 @@ Emydex Farm is now empty
             Console.ReadKey();
 
             var farm = new EmydexFarmSystem();
+            farm.FarmEmpty += Farm_FarmEmpty;
+
             var cow = new Cow();
             farm.Enter(cow);
 
@@ -162,5 +164,9 @@ Emydex Farm is now empty
             Console.ReadKey();
         }
 
+        private static void Farm_FarmEmpty(object sender, EventArgs e)
+        {
+            Console.WriteLine("Emydex Farm is now empty");
+        }
     }
 }
