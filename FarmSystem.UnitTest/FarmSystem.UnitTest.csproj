@@ -53,6 +53,7 @@
     <Compile Include="Test2Objective.cs" />
     <Compile Include="Test1Objective.cs" />
     <Compile Include="Test3Objective.cs" />
+    <Compile Include="Test4Objective.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
