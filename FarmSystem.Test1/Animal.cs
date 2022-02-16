@@ -9,5 +9,10 @@ namespace FarmSystem.Test1
     public abstract class Animal
     {
         public virtual string Name { get; }
+
+        public string MakeNoise()
+        {
+            return $"{this.Name} says noise";
+        }
     }
 }
