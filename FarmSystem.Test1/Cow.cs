@@ -45,15 +45,19 @@ namespace FarmSystem.Test1
             Console.WriteLine("Cow is walking");
         }
 
-        public void ProduceMilk()
-        {
-            Console.WriteLine(this.Milk());
-        }
-
         public void Run()
         {
             Console.WriteLine("Cow is running");
         }
 
+        public string ProduceMilkLine()
+        {
+            return $"{this.Name} was milked!";
+        }
+
+        public void ProduceMilk()
+        {
+            Console.WriteLine(this.ProduceMilkLine());
+        }
     }
 }

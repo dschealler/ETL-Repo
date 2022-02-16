@@ -16,22 +16,5 @@ namespace FarmSystem.Test1
         {
             return $"{this.Name} says {this.Noise}";
         }
-
-        public bool IsMilkable()
-        {
-            return this is IMilkableAnimal;
-        }
-
-        public string Milk()
-        {
-            if (this.IsMilkable())
-            {
-                return $"{this.Name} was milked!";
-            }
-            else
-            {
-                return $"{this.Name} cannot be milked.";
-            }
-        }
     }
 }

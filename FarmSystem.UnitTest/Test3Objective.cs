@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using FarmSystem.Test1;
+using FarmSystem.Test2;
 
 namespace FarmSystem.UnitTest
 {
@@ -8,107 +9,53 @@ namespace FarmSystem.UnitTest
     public class Test3Objective
     {
         [TestMethod]
-        public void IsCowMilkable()
-        {
-            bool expected = true;
-
-            Cow cow = new Cow();
-            cow.Id = Guid.NewGuid().ToString();
-            cow.NoOfLegs = 4;
-            bool actual = cow.IsMilkable();
-
-            Assert.AreEqual<bool>(expected, actual);
-        }
-
-        [TestMethod]
-        public void MilkCow()
+        public void CanMilkCow()
         {
             string expected = "Cow was milked!";
 
             Cow cow = new Cow();
             cow.Id = Guid.NewGuid().ToString();
             cow.NoOfLegs = 4;
-            string actual = cow.Milk();
+
+            var milkableAnimal = cow as IMilkableAnimal;
+            Assert.IsNotNull(milkableAnimal);
+
+            string actual = milkableAnimal.ProduceMilkLine();
 
             Assert.AreEqual<string>(expected, actual);
         }
 
         [TestMethod]
-        public void HenNoise()
+        public void CannotMilkHen()
         {
-            bool expected = false;
-
             Hen hen = new Hen();
             hen.Id = Guid.NewGuid().ToString();
             hen.NoOfLegs = 4;
-            bool actual = hen.IsMilkable();
 
-            Assert.AreEqual<bool>(expected, actual);
+            var milkableAnimal = hen as IMilkableAnimal;
+            Assert.IsNull(milkableAnimal);
         }
 
         [TestMethod]
-        public void MilkHen()
+        public void CannotMilkHorse()
         {
-            string expected = "Hen cannot be milked.";
-
-            Hen hen = new Hen();
-            hen.Id = Guid.NewGuid().ToString();
-            hen.NoOfLegs = 4;
-            string actual = hen.Milk();
-
-            Assert.AreEqual<string>(expected, actual);
-        }
-
-        [TestMethod]
-        public void HorseNoise()
-        {
-            bool expected = false;
-
-            Horse horse = new Horse();
+            var horse = new Horse();
             horse.Id = Guid.NewGuid().ToString();
             horse.NoOfLegs = 4;
-            bool actual = horse.IsMilkable();
 
-            Assert.AreEqual<bool>(expected, actual);
+            var milkableAnimal = horse as IMilkableAnimal;
+            Assert.IsNull(milkableAnimal);
         }
 
         [TestMethod]
-        public void MilkHorse()
+        public void CannotMilkSheep()
         {
-            string expected = "Horse cannot be milked.";
-
-            Horse horse = new Horse();
-            horse.Id = Guid.NewGuid().ToString();
-            horse.NoOfLegs = 4;
-            string actual = horse.Milk();
-
-            Assert.AreEqual<string>(expected, actual);
-        }
-
-        [TestMethod]
-        public void SheepNoise()
-        {
-            bool expected = false;
-
-            Sheep sheep = new Sheep();
+            var sheep = new Sheep();
             sheep.Id = Guid.NewGuid().ToString();
             sheep.NoOfLegs = 4;
-            bool actual = sheep.IsMilkable();
 
-            Assert.AreEqual<bool>(expected, actual);
-        }
-
-        [TestMethod]
-        public void MilkSheep()
-        {
-            string expected = "Sheep cannot be milked.";
-
-            Sheep sheep = new Sheep();
-            sheep.Id = Guid.NewGuid().ToString();
-            sheep.NoOfLegs = 4;
-            string actual = sheep.Milk();
-
-            Assert.AreEqual<string>(expected, actual);
+            var milkableAnimal = sheep as IMilkableAnimal;
+            Assert.IsNull(milkableAnimal);
         }
     }
 }
