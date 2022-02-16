@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FarmSystem.Test2;
+using System;
 using System.Collections.Generic;
 
 namespace FarmSystem.Test1
@@ -41,7 +42,21 @@ namespace FarmSystem.Test1
         //TEST 3
         public void MilkAnimals()
         {
-            Console.WriteLine("Cannot identify the farm animals which can be milked");
+            if (this._animals.Count == 0)
+            {
+                Console.WriteLine("There are no animals in the farm");
+            }
+            else
+            {
+                foreach (var animal in this._animals)
+                {
+                    var milkableAnimal = animal as IMilkableAnimal;
+                    if (milkableAnimal == null)
+                        continue;
+
+                    milkableAnimal.ProduceMilk();
+                }
+            }
         }
 
         //TEST 4

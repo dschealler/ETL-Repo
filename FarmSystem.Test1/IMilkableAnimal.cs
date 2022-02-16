@@ -9,6 +9,8 @@
 
         void ProduceMilk();
 
+        string ProduceMilkLine();
+
         #endregion
     }
 }
