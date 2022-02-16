@@ -19,12 +19,19 @@ namespace FarmSystem.Test1
 
         public bool IsMilkable()
         {
-            throw new NotImplementedException();
+            return this is IMilkableAnimal;
         }
 
         public string Milk()
         {
-            throw new NotImplementedException();
+            if (this.IsMilkable())
+            {
+                return $"{this.Name} was milked!";
+            }
+            else
+            {
+                return $"{this.Name} cannot be milked.";
+            }
         }
     }
 }

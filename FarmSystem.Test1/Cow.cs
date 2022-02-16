@@ -1,8 +1,9 @@
-﻿using System;
+﻿using FarmSystem.Test2;
+using System;
 
 namespace FarmSystem.Test1
 {
-    public class Cow : Animal
+    public class Cow : Animal, IMilkableAnimal
     {
         private const string NAME = "Cow";
         private const string NOISE = "Moo!";
@@ -46,7 +47,7 @@ namespace FarmSystem.Test1
 
         public void ProduceMilk()
         {
-            Console.WriteLine("Cow produced milk");
+            Console.WriteLine(this.Milk());
         }
 
         public void Run()
