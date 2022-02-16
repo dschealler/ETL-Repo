@@ -6,12 +6,7 @@ namespace FarmSystem.Test1
 {
     public class EmydexFarmSystem
     {
-        private readonly Queue<Animal> _animals;
-
-        public EmydexFarmSystem()
-        {
-            this._animals = new Queue<Animal>();
-        }
+        private readonly Queue<Animal> _animals = new Queue<Animal>();
 
         //TEST 1
         public void Enter(Animal animal)

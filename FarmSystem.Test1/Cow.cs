@@ -7,13 +7,14 @@ namespace FarmSystem.Test1
     {
         private const string NAME = "Cow";
         private const string NOISE = "Moo!";
+        private const int DEFAULT_NO_OF_LEGS = 2;
 
         public override string Name => NAME;
         public override string Noise => NOISE;
 
         public Cow()
         {
-            this.NoOfLegs = 4;
+            this.NoOfLegs = DEFAULT_NO_OF_LEGS;
         }
 
         public void ProduceMilk()
