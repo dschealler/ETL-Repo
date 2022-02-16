@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FarmSystem.Test2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,16 @@ namespace FarmSystem.Test1
         public string MakeNoise()
         {
             return $"{this.Name} says {this.Noise}";
+        }
+
+        public bool IsMilkable()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Milk()
+        {
+            throw new NotImplementedException();
         }
     }
 }
